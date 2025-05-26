@@ -15,7 +15,7 @@ CREATE TABLE scores (
   id SERIAL PRIMARY KEY,
   judge_id INT NOT NULL REFERENCES judges(id),
   participant_id INT NOT NULL REFERENCES participants(id),
-  score INT NOT NULL,
+  points INT NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
