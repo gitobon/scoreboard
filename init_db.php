@@ -1,12 +1,37 @@
 <?php
-// init_db.php – run this once, then delete it
+include 'db.php';
 
-include 'db.php';    // pdo connection from db.php
+$sql = "
+CREATE TABLE IF NOT EXISTS judges (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(50) UNIQUE NOT NULL,
+  display_name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS participants (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS scores (
+  id SERIAL PRIMARY KEY,
+  judge_id INT NOT NULL REFERENCES judges(id),
+  participant_id INT NOT NULL REFERENCES participants(id),
+  points INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO participants (name) VALUES
+('Alice'),
+('Bob'),
+('Charlie'),
+('Diana');
+";
 
 try {
-    $sql = file_get_contents(__DIR__ . '/schema.sql');
-    $pdo->exec($sql);
-    echo "✅ Tables created successfully!";
-} catch (Exception $e) {
-    echo "❌ Error creating tables: " . $e->getMessage();
+  $pdo->exec($sql);
+  echo "Database initialized successfully.";
+} catch (PDOException $e) {
+  echo "DB Error: " . $e->getMessage();
 }
+?>
