@@ -1,11 +1,15 @@
 <?php
-$host = 'localhost';
-$user = 'root';
-$password = '';
-$database = 'scoreboard';
+$host = getenv('DB_HOST');
+$port = getenv('DB_PORT');
+$db   = getenv('DB_NAME');
+$user = getenv('DB_USER');
+$pass = getenv('DB_PASSWORD');
 
-$conn = new mysqli($host, $user, $password, $database);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+$dsn = "pgsql:host=$host;port=$port;dbname=$db";
+try {
+    $pdo = new PDO($dsn, $user, $pass, [
+      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    ]);
+} catch (PDOException $e) {
+    die("DB Connection failed: " . $e->getMessage());
 }
-?>
