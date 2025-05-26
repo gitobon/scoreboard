@@ -10,7 +10,6 @@
 <body>
   <nav>
     <a href="admin.php">Admin</a>
-    <a href="judge.php">Judge</a>
     <a href="index.php" class="active">Scoreboard</a>
   </nav>
 
