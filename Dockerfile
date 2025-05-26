@@ -1,10 +1,13 @@
 FROM php:8.1-apache
 
-# Install MySQL extension
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+# Install Postgres client library & PHP extension
+RUN apt-get update \
+ && apt-get install -y libpq-dev \
+ && docker-php-ext-install pdo_pgsql
 
-# Copy our code into Apache’s web root
+# Copy app code
 COPY . /var/www/html/
 
-# Ensure logs show up in Render’s console
+# Ensure correct permissions
 RUN chmod -R 755 /var/www/html
+
