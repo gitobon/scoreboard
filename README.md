@@ -8,7 +8,7 @@ A simple PHP-MySQL app to let judges score participants, with a public scoreboar
 2. Place project folder in `C:/wamp64/www/scoreboard`
 3. Run WAMP and access via `http://localhost/scoreboard`
 4. Create DB using phpMyAdmin with provided schema.
-# Browse locally to:
+### Browse locally to:
 http://localhost/scoreboard/admin.php → add judges & participants
 http://localhost/scoreboard/judge.php → submit scores
 http://localhost/scoreboard/index.php → view scoreboard
