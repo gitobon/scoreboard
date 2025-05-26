@@ -18,3 +18,13 @@ CREATE TABLE scores (
   score INT NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+USE scoreboard_db;
+
+INSERT INTO participants (name) VALUES
+  ('Alice'),
+  ('Bob'),
+  ('Charlie'),
+ ('Gito'),
+  ('Mary'),
+  ('Diana');
