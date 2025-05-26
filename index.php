@@ -8,6 +8,11 @@
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
+    <nav>
+    <a href="admin.php">Admin</a>
+    <a href="judge.php">Judge portal</a>
+    <a href="index.php" class="active">Scoreboard</a>
+  </nav>
 <div class="container">
   <h1>Scoreboard</h1>
   <table>
